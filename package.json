@@ -1,0 +1,23 @@
+{
+  "name": "@develoka/angka-terbilang-js",
+  "version": "1.0.0",
+  "description": "Mengkonversi angka ke dalam bilangan bahasa Indonesia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/develoka/angka-terbilang-js.git"
+  },
+  "keywords": [
+    "javascript",
+    "terbilang"
+  ],
+  "author": "rmdwirizki <ryuxote@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/develoka/angka-terbilang-js/issues"
+  },
+  "homepage": "https://github.com/develoka/angka-terbilang-js#readme"
+}
