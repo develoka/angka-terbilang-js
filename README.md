@@ -69,7 +69,7 @@ console.log( angkaTerbilang('1231271') ); // ini benar
 
 ## Testing
 
-Testing menggunakan (jest)[https://jestjs.io/]. Lihat (file tests)[https://github.com/develoka/angka-terbilang-js/blob/master/test/index.test.js]
+Testing menggunakan [jest](https://jestjs.io/). Lihat [file tests](https://github.com/develoka/angka-terbilang-js/blob/master/test/index.test.js).
 
 ```
 npm install
