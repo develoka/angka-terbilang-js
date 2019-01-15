@@ -4,7 +4,8 @@
   "description": "Mengkonversi angka ke dalam bilangan bahasa Indonesia",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "browserify -t [ babelify --presets [ @babel/preset-env ] ] -t uglifyify index.js --standalone angkaTerbilang > index.min.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,11 @@
   },
   "homepage": "https://github.com/develoka/angka-terbilang-js#readme",
   "devDependencies": {
-    "jest": "^23.6.0"
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3",
+    "jest": "^23.6.0",
+    "uglifyify": "^5.0.1"
   }
 }
