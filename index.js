@@ -3,7 +3,7 @@
 var convertToUnit = function (digit) {
   if (digit >= 63) return 'vigintiliun'
   else if (digit >= 60) return 'novemdesiliun'
-  else if (digit >= 57) return 'octodesiliun'
+  else if (digit >= 57) return 'oktodesiliun'
   else if (digit >= 54) return 'septendesiliun'
   else if (digit >= 51) return 'sexdesiliun'
   else if (digit >= 48) return 'quindesiliun'
@@ -13,7 +13,7 @@ var convertToUnit = function (digit) {
   else if (digit >= 36) return 'undesiliun'
   else if (digit >= 33) return 'desiliun'
   else if (digit >= 30) return 'noniliun'
-  else if (digit >= 27) return 'octiliun'
+  else if (digit >= 27) return 'oktiliun'
   else if (digit >= 24) return 'septiliun'
   else if (digit >= 21) return 'sextiliun'
   else if (digit >= 18) return 'quintiliun'
