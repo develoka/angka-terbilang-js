@@ -1,4 +1,4 @@
-# Angka-terbilang-js
+# Angka-terbilang-js [![NPM Version](https://img.shields.io/npm/v/@develoka/angka-terbilang-js.svg)](https://www.npmjs.com/package/@develoka/angka-terbilang-js) [![Minified Size](https://img.shields.io/bundlephobia/min/@develoka/angka-terbilang-js.svg)](https://www.npmjs.com/package/@develoka/angka-terbilang-js)
 Mengkonversi angka ke dalam bilangan bahasa Indonesia
 
 ## Demo
