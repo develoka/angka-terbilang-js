@@ -50,3 +50,9 @@ test('all-zero', () => {
     expect(angkaTerbilang('10000000000000000000')).toBe("sepuluh quintiliun");
     expect(angkaTerbilang('100000000000000000000')).toBe("seratus quintiliun");
 });
+
+test('koma-number', () => {
+    expect(angkaTerbilang('123.12')).toBe("seratus dua puluh tiga koma satu dua");
+    expect(angkaTerbilang('543.49')).toBe("lima ratus empat puluh tiga koma empat sembilan");
+    expect(angkaTerbilang('513.06')).toBe("lima ratus tiga belas koma nol enam");
+});
