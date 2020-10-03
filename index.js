@@ -1,58 +1,26 @@
 "use strict"
 
-function convertToUnit(digit) {
-  const unit = [
-    "",
-    "ribu",
-    "juta",
-    "milyar",
-    "triliun",
-    "quadriliun",
-    "quintiliun",
-    "sextiliun",
-    "septiliun",
-    "oktiliun",
-    "noniliun",
-    "desiliun",
-    "undesiliun",
-    "tredesiliun",
-    "quattuordesiliun",
-    "quattuordesiliun",
-    "quindesiliun",
-    "sexdesiliun",
-    "septendesiliun",
-    "oktodesiliun",
-    "novemdesiliun"
-  ];
-  const index = Math.floor(digit / 3);
-
-  return index > 20 ? "vigintiliun" : unit[index];
+const units = ['', 'ribu', 'juta', 'milyar', 'triliun', 'quadriliun', 'quintiliun', 'sextiliun', 'septiliun', 'oktiliun', 'noniliun', 'desiliun', 'undesiliun', 'duodesiliun', 'tredesiliun', 'quattuordesiliun', 'quindesiliun', 'sexdesiliun', 'septendesiliun', 'oktodesiliun', 'novemdesiliun', 'vigintiliun']
+const digitToUnit = (digit) => {
+  const curIndex = Math.floor(digit / 3)
+  const maxIndex = units.length - 1
+  return curIndex > maxIndex ? units[maxIndex] : units[curIndex]
 }
 
-function numberToString(index) {
-  const numbers = [
-    "satu",
-    "dua",
-    "tiga",
-    "empat",
-    "lima",
-    "enam",
-    "tujuh",
-    "delapan",
-    "sembilan"
-  ];
-  return numbers[index - 1] || "";
+const numbers = ['satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan']
+const numberToText = (index) => {
+  return numbers[index - 1] || ''
 }
 
-function terb_depan(angka) {
+const terbilang = (angka) => {
   let result = ''
   let printUnit = true
   let isBelasan = false
 
   for (let i = 0; i < angka.length; i++) {
-    let length = angka.length - 1 - i
+    const length = angka.length - 1 - i
     if (length % 3 == 0) {
-      let num = (angka[i] == 1 && (isBelasan || (convertToUnit(length) == 'ribu' && ((angka[i - 2] == undefined || angka[i - 2] == 0) && (angka[i - 1] == undefined || angka[i - 1] == 0))))) ? 'se' : `${numberToString(angka[i])} `
+      const num = (angka[i] == 1 && (isBelasan || (digitToUnit(length) == 'ribu' && ((angka[i - 2] == undefined || angka[i - 2] == 0) && (angka[i - 1] == undefined || angka[i - 1] == 0))))) ? 'se' : `${numberToText(angka[i])} `
       result += ` ${num}`
 
       if ((angka[i - 2] && angka[i - 2] != 0) || (angka[i - 1] && angka[i - 1] != 0) || angka[i] != 0) {
@@ -60,13 +28,13 @@ function terb_depan(angka) {
       }
       if (printUnit) {
         printUnit = false
-        result += ((isBelasan) ? 'belas ' : '') + convertToUnit(length)
+        result += ((isBelasan) ? 'belas ' : '') + digitToUnit(length)
         if (isBelasan) {
           isBelasan = false
         }
       }
     } else if (length % 3 == 2 && angka[i] != 0) {
-      result += ` ${(angka[i] == 1) ? 'se' : numberToString(angka[i]) + ' '}ratus`
+      result += ` ${(angka[i] == 1) ? 'se' : numberToText(angka[i]) + ' '}ratus`
     } else if (length % 3 == 1 && angka[i] != 0) {
       if (angka[i] == 1) {
         if (angka[i + 1] == 0) {
@@ -75,7 +43,7 @@ function terb_depan(angka) {
           isBelasan = true
         }
       } else {
-        result += ` ${numberToString(angka[i])} puluh`
+        result += ` ${numberToText(angka[i])} puluh`
       }
     }
   }
@@ -83,18 +51,18 @@ function terb_depan(angka) {
   return result.trim().replace(/\s+/g, ' ')
 }
 
-function terb_belakang(t) {
-  return t
-    .split("")
-    .map(angka => angka == 0 ? "nol" : numberToString(parseInt(angka)))
-    .join(" ");
+const terbilangSatuSatu = (angka) => {
+  return angka
+    .split('')
+    .map(angka => angka == 0 ? 'nol' : numberToText(angka))
+    .join(' ')
 }
 
-module.exports = function angkaTerbilang(angka, decimalSeparator = ".") {
-  const target = !(typeof angka == "string") ? angka.toString() : angka;
-  const parts = target.split(decimalSeparator);
-  return (
-    terb_depan(parts[0]) +
-    (parseInt(parts[1]) > 0 ? " koma " + terb_belakang(parts[1]) : "")
-  );
+module.exports = function angkaTerbilang(target, settings={decimal: ','}) {
+  if (typeof target !== "string") target = target.toString()
+  target = target.split(settings.decimal)
+
+  return target[1] 
+    ? `${terbilang(target[0])} koma ${terbilangSatuSatu(target[1])}` 
+    : terbilang(target[0])
 }

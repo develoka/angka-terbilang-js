@@ -61,15 +61,15 @@ Mendukung bilangan hingga 10<sup>63</sup>
 | 10<sup>60</sup> | novemdesiliun    |
 | 10<sup>63</sup> | vigintiliun      |
 
-## Catatan
+## Mendukung konversi angka di belakang koma. 
 
-Fungsi `angkaTerbilang` hanya menerima parameter dengan tipe data `string`. Untuk menggunakan angka / `integer` konversi dulu ke `string`.
+Default simbol koma adalah `","`. Untuk mengubah gunakan parameter tambahan.
 
 ```js
-console.log( angkaTerbilang(1231271) ); // ini salah
-
-console.log( angkaTerbilang((1231271).toString()) ); // ini benar
-console.log( angkaTerbilang('1231271') ); // ini benar
+console.log( angkaTerbilang('123,23') );
+// seratus dua puluh tiga koma dua tiga
+console.log( angkaTerbilang('123.23', {decimal: '.'}) );
+// seratus dua puluh tiga koma dua tiga
 ```
 
 ## Testing
