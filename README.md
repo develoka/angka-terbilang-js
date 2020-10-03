@@ -5,7 +5,7 @@ Mengkonversi angka ke dalam bilangan bahasa Indonesia. Misalnya dari `123`, menj
 
 [Link Demo](http://code.bakasyntax.com/gist/e41efb58b4b7fae2bfdfd0a1b0219ed7?default-pans=html,js,output)
 
-## Instalasi dan Penggunaan
+## Instalasi
 
 ```
 npm install @develoka/angka-terbilang-js
@@ -24,7 +24,7 @@ atau langsung dari web browser
 <script src="https://unpkg.com/@develoka/angka-terbilang-js/index.min.js">
 ```
 
-## Usage
+## Penggunaan
 
 ```js
 console.log(angkaTerbilang(777666555));
