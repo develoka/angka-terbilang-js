@@ -3,12 +3,15 @@ Mengkonversi angka ke dalam bilangan bahasa Indonesia
 
 ## Demo
 
-[Codepan Link](http://code.bakasyntax.com/gist/e41efb58b4b7fae2bfdfd0a1b0219ed7?default-pans=html,js,output)
+[Link Demo](http://code.bakasyntax.com/gist/e41efb58b4b7fae2bfdfd0a1b0219ed7?default-pans=html,js,output)
 
-## Installation
+## Instalasi dan Penggunaan
 
 ```
 npm install @develoka/angka-terbilang-js
+```
+```js
+import angkaTerbilang from '@develoka/angka-terbilang-js';
 ```
 
 atau
@@ -20,8 +23,6 @@ atau
 ## Usage
 
 ```js
-import angkaTerbilang from '@develoka/angka-terbilang-js';
-
 console.log( angkaTerbilang('123812294') );
 // seratus dua puluh tiga juta delapan ratus dua belas ribu dua ratus sembilan puluh empat
 console.log( angkaTerbilang('1002109381290') );
@@ -79,6 +80,20 @@ Testing menggunakan [jest](https://jestjs.io/). Lihat [file tests](https://githu
 npm install
 npm run test
 ```
+
+## Benchmark / Uji Performa
+
+Benchmark dilakukan terhadap 2 package serupa lainnya. Dengan mengkonversi angka dengan besaran **ratusan ribu**, **ratusan juta**, **ratusan milyar**, **ratusan triliun**.
+
+| Package                          | Angka Ratusan Ribu      | Angka Ratusan Juta      | Angka Ratusan Milyar    | Angka Ratusan Triliun   |
+|----------------------------------|-------------------|-------------------|-------------------|-------------------|
+| [@develoka/angka-terbilang-js](https://github.com/develoka/angka-terbilang-js)     | 8,620,087 | 8,158,512 | 8,405,430 | 8,400,032 |
+| [dikyarga/angka-menjadi-terbilang](https://github.com/dikyarga/angka-menjadi-terbilang) | 115,191   | 102,782   | 87,106    | 78,586    |
+| [BosNaufal/terbilang-js](https://github.com/BosNaufal/terbilang-js)           | 176,747   | 148,422   | 90,717    | 58,782    |
+
+Hasil pengujian menunjukkan `@develoka/angka-terbilang-js` memiliki performa lebih cepat hingga bisa memproses **80x** proses lebih banyak setiap detiknya.
+
+Detail benchmark dapat dilihat pada halaman [repository benchmark](https://github.com/develoka/angka-terbilang-js-benchmark).
 
 ## Development
 
