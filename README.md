@@ -23,11 +23,11 @@ atau
 ## Usage
 
 ```js
-console.log( angkaTerbilang('123812294') );
-// seratus dua puluh tiga juta delapan ratus dua belas ribu dua ratus sembilan puluh empat
-console.log( angkaTerbilang('1002109381290') );
+console.log(angkaTerbilang(777666555));
+// tujuh ratus tujuh puluh tujuh juta enam ratus enam puluh enam ribu lima ratus lima puluh lima
+console.log(angkaTerbilang('1002109381290'));
 // satu triliun dua milyar seratus sembilan juta tiga ratus delapan puluh satu ribu dua ratus sembilan puluh
-console.log( angkaTerbilang('3148112838011192391239213') );
+console.log(angkaTerbilang('3148112838011192391239213'));
 // tiga septiliun seratus empat puluh delapan sextiliun seratus dua belas quintiliun delapan ratus tiga puluh delapan quadriliun sebelas triliun seratus sembilan puluh dua milyar tiga ratus sembilan puluh satu juta dua ratus tiga puluh sembilan ribu dua ratus tiga belas
 ```
 
@@ -61,12 +61,14 @@ Mendukung bilangan hingga 10<sup>63</sup>
 | 10<sup>60</sup> | novemdesiliun    |
 | 10<sup>63</sup> | vigintiliun      |
 
-Mendukung konversi angka di belakang koma. Default simbol koma adalah `","`. Untuk mengubah gunakan parameter tambahan.
+Mendukung konversi angka di belakang koma. Default simbol koma adalah `"."`. Untuk mengubah gunakan parameter tambahan.
 
 ```js
-console.log( angkaTerbilang('123,23') );
+console.log(angkaTerbilang(123.23));
 // seratus dua puluh tiga koma dua tiga
-console.log( angkaTerbilang('123.23', {decimal: '.'}) );
+console.log(angkaTerbilang('123.23'));
+// seratus dua puluh tiga koma dua tiga
+console.log(angkaTerbilang('123,23', {decimal: ','}));
 // seratus dua puluh tiga koma dua tiga
 ```
 

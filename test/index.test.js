@@ -54,10 +54,10 @@ test('all-zero', () => {
 });
 
 test('koma-number', () => {
-    expect(angkaTerbilang('123,12')).toBe("seratus dua puluh tiga koma satu dua");
-    expect(angkaTerbilang('543,49')).toBe("lima ratus empat puluh tiga koma empat sembilan");
-    expect(angkaTerbilang('513,06')).toBe("lima ratus tiga belas koma nol enam");
-    expect(angkaTerbilang('123.123', {decimal: '.'})).toBe("seratus dua puluh tiga koma satu dua tiga");
-    expect(angkaTerbilang('543.40', {decimal: '.'})).toBe("lima ratus empat puluh tiga koma empat nol");
-    expect(angkaTerbilang('513.06', {decimal: '.'})).toBe("lima ratus tiga belas koma nol enam");
+    expect(angkaTerbilang('123.12')).toBe("seratus dua puluh tiga koma satu dua");
+    expect(angkaTerbilang('543.49')).toBe("lima ratus empat puluh tiga koma empat sembilan");
+    expect(angkaTerbilang('513.06')).toBe("lima ratus tiga belas koma nol enam");
+    expect(angkaTerbilang('123,123', {decimal: ','})).toBe("seratus dua puluh tiga koma satu dua tiga");
+    expect(angkaTerbilang('543,40', {decimal: ','})).toBe("lima ratus empat puluh tiga koma empat nol");
+    expect(angkaTerbilang('513,06', {decimal: ','})).toBe("lima ratus tiga belas koma nol enam");
 });

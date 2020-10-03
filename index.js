@@ -58,7 +58,7 @@ const terbilangSatuSatu = (angka) => {
     .join(' ')
 }
 
-module.exports = function angkaTerbilang(target, settings={decimal: ','}) {
+module.exports = function angkaTerbilang(target, settings={decimal: '.'}) {
   if (typeof target !== "string") target = target.toString()
   target = target.split(settings.decimal)
 
