@@ -1,5 +1,5 @@
 # Angka-terbilang-js [![NPM Version](https://img.shields.io/npm/v/@develoka/angka-terbilang-js.svg)](https://www.npmjs.com/package/@develoka/angka-terbilang-js) [![Minified Size](https://img.shields.io/bundlephobia/min/@develoka/angka-terbilang-js.svg)](https://www.npmjs.com/package/@develoka/angka-terbilang-js)
-Mengkonversi angka ke dalam bilangan bahasa Indonesia
+Mengkonversi angka ke dalam bilangan bahasa Indonesia. Misalnya dari `123`, menjadi `seratus dua puluh tiga`.
 
 ## Demo
 
@@ -10,11 +10,15 @@ Mengkonversi angka ke dalam bilangan bahasa Indonesia
 ```
 npm install @develoka/angka-terbilang-js
 ```
+
+kemudian
+
 ```js
-import angkaTerbilang from '@develoka/angka-terbilang-js';
+import angkaTerbilang from '@develoka/angka-terbilang-js'; // if using import
+const angkaTerbilang = require('@develoka/angka-terbilang-js'); // if using require
 ```
 
-atau
+atau langsung dari web browser
 
 ```
 <script src="https://unpkg.com/@develoka/angka-terbilang-js/index.min.js">
