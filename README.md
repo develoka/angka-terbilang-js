@@ -81,6 +81,14 @@ npm install
 npm run test
 ```
 
+## Development
+
+Edit `index.js` kemudian jalankan perintah:
+
+```
+npm run build
+```
+
 ## Benchmark / Uji Performa
 
 Benchmark dilakukan terhadap 2 package serupa lainnya. Dengan mengkonversi angka dengan besaran **ratusan ribu**, **ratusan juta**, **ratusan milyar**, **ratusan triliun**.
@@ -94,11 +102,3 @@ Benchmark dilakukan terhadap 2 package serupa lainnya. Dengan mengkonversi angka
 Hasil pengujian menunjukkan `@develoka/angka-terbilang-js` memiliki performa lebih cepat hingga bisa memproses **80x** proses lebih banyak setiap detiknya.
 
 Detail benchmark dapat dilihat pada halaman [repository benchmark](https://github.com/develoka/angka-terbilang-js-benchmark).
-
-## Development
-
-Edit `index.js` kemudian jalankan perintah:
-
-```
-npm run build
-```
