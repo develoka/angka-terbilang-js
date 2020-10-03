@@ -61,9 +61,7 @@ Mendukung bilangan hingga 10<sup>63</sup>
 | 10<sup>60</sup> | novemdesiliun    |
 | 10<sup>63</sup> | vigintiliun      |
 
-## Mendukung konversi angka di belakang koma. 
-
-Default simbol koma adalah `","`. Untuk mengubah gunakan parameter tambahan.
+Mendukung konversi angka di belakang koma. Default simbol koma adalah `","`. Untuk mengubah gunakan parameter tambahan.
 
 ```js
 console.log( angkaTerbilang('123,23') );
