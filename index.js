@@ -15,7 +15,7 @@ function numberToText (index) {
 const terbilang = (angka) => {
   const length = angka.length - 1
 
-  if (length === 0 && angka[0] == 0) {
+  if (length === 0 && Number(angka[0]) === 0) {
     return 'nol'
   }
 
@@ -27,7 +27,7 @@ const terbilang = (angka) => {
   let i = 0
   while (i <= length) {
 
-    if (result) {
+    if (result !== '') {
       finalResult += space + result
       result = ''
       space = ' '
@@ -36,56 +36,52 @@ const terbilang = (angka) => {
     const digitCount = length - i
     const modGroup = digitCount % 3 // [2,1,0]
     const curAngka = Number(angka[i])
-    let has00InPrev = false
 
+    let has00InPrev = false
+    
     if (modGroup === 0) {
-      has00InPrev = i === 0 || (angka[i - 2] == 0 && angka[i - 1] == 0)
+      has00InPrev = i === 0 || (
+        Number(angka[i - 2]) === 0 && Number(angka[i - 1]) === 0
+      )
     }
 
-    switch (curAngka) {
-      case 0: {
-        if (modGroup === 0 && !has00InPrev) {
-          result += `${digitToUnit(digitCount)}`
-        }
-        break
-      }
-      default: {
-        if (modGroup === 0) {
-          if (curAngka != 1 || digitCount != 3 || !has00InPrev) {
-            const txt = numberToText(curAngka)
-            const num = txt ? `${txt}${(i !== length) ? ' ' : ''}` : ''
-            if (!skipNextNumber) {
-              result = `${num}`
-            }
-            if (!has00InPrev || curAngka !== 0) {
-              result += `${digitToUnit(digitCount)}`
-            }
-            skipNextNumber = false
-          } else {
-            result = 'seribu'
+    if (curAngka !== 0) {
+      if (modGroup === 0) {
+        if (curAngka !== 1 || digitCount !== 3 || has00InPrev === false) {
+          if (skipNextNumber === false) {
+            result = numberToText(curAngka) + (i !== length ? ' ' : '')
           }
-        } else if (modGroup === 2) {
-          if (curAngka === 1) {
-            result = 'seratus'
-          } else {
-            result = `${numberToText(curAngka)} ratus`
+          if (has00InPrev === false || curAngka !== 0) {
+            result += `${digitToUnit(digitCount)}`
           }
+          skipNextNumber = false
         } else {
-          if (curAngka === 1) {
-            const nextAngka = Number(angka[i + 1])
-            if (nextAngka === 0) {
-              result = 'sepuluh'
-            } else if (nextAngka === 1) {
-              result = 'sebelas'
-            } else {
-              result = `${numberToText(nextAngka)} belas`
-            }
-            skipNextNumber = true
-          } else {
-            result = `${numberToText(curAngka)} puluh`
-          }
+          result = 'seribu'
         }
-        break
+      } else if (modGroup === 2) {
+        if (curAngka === 1) {
+          result = 'seratus'
+        } else {
+          result = `${numberToText(curAngka)} ratus`
+        }
+      } else {
+        if (curAngka === 1) {
+          const nextAngka = Number(angka[i + 1])
+          if (nextAngka === 0) {
+            result = 'sepuluh'
+          } else if (nextAngka === 1) {
+            result = 'sebelas'
+          } else {
+            result = `${numberToText(nextAngka)} belas`
+          }
+          skipNextNumber = true
+        } else {
+          result = `${numberToText(curAngka)} puluh`
+        }
+      }
+    } else {
+      if (modGroup === 0 && has00InPrev === false) {
+        result += `${digitToUnit(digitCount)}`
       }
     }
 
