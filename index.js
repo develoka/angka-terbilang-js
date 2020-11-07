@@ -1,54 +1,98 @@
 "use strict"
 
 const units = ['', 'ribu', 'juta', 'milyar', 'triliun', 'quadriliun', 'quintiliun', 'sextiliun', 'septiliun', 'oktiliun', 'noniliun', 'desiliun', 'undesiliun', 'duodesiliun', 'tredesiliun', 'quattuordesiliun', 'quindesiliun', 'sexdesiliun', 'septendesiliun', 'oktodesiliun', 'novemdesiliun', 'vigintiliun']
-const digitToUnit = (digit) => {
-  const curIndex = Math.floor(digit / 3)
-  const maxIndex = units.length - 1
-  return curIndex > maxIndex ? units[maxIndex] : units[curIndex]
+const maxIndex = units.length - 1
+function digitToUnit (digit) {
+  const curIndex = digit / 3
+  return curIndex <= maxIndex ? units[curIndex] : units[maxIndex]
 }
 
-const numbers = ['satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan']
-const numberToText = (index) => {
-  return numbers[index - 1] || ''
+const numbers = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan']
+function numberToText (index) {
+  return numbers[index] || ''
 }
 
 const terbilang = (angka) => {
-  let result = ''
-  let printUnit = true
-  let isBelasan = false
+  const length = angka.length - 1
 
-  for (let i = 0; i < angka.length; i++) {
-    const length = angka.length - 1 - i
-    if (length % 3 == 0) {
-      const num = (angka[i] == 1 && (isBelasan || (digitToUnit(length) == 'ribu' && ((angka[i - 2] == undefined || angka[i - 2] == 0) && (angka[i - 1] == undefined || angka[i - 1] == 0))))) ? 'se' : `${numberToText(angka[i])} `
-      result += ` ${num}`
-
-      if ((angka[i - 2] && angka[i - 2] != 0) || (angka[i - 1] && angka[i - 1] != 0) || angka[i] != 0) {
-        printUnit = true
-      }
-      if (printUnit) {
-        printUnit = false
-        result += ((isBelasan) ? 'belas ' : '') + digitToUnit(length)
-        if (isBelasan) {
-          isBelasan = false
-        }
-      }
-    } else if (length % 3 == 2 && angka[i] != 0) {
-      result += ` ${(angka[i] == 1) ? 'se' : numberToText(angka[i]) + ' '}ratus`
-    } else if (length % 3 == 1 && angka[i] != 0) {
-      if (angka[i] == 1) {
-        if (angka[i + 1] == 0) {
-          result += ' sepuluh'
-        } else {
-          isBelasan = true
-        }
-      } else {
-        result += ` ${numberToText(angka[i])} puluh`
-      }
-    }
+  if (length === 0 && angka[0] == 0) {
+    return 'nol'
   }
 
-  return result.trim().replace(/\s+/g, ' ')
+  let skipNextNumber = false
+  let space = ''
+  let result = ''
+  let finalResult = ''
+
+  let i = 0
+  while (i <= length) {
+
+    if (result) {
+      finalResult += space + result
+      result = ''
+      space = ' '
+    }
+
+    const digitCount = length - i
+    const modGroup = digitCount % 3 // [2,1,0]
+    const curAngka = Number(angka[i])
+    let has00InPrev = false
+
+    if (modGroup === 0) {
+      has00InPrev = i === 0 || (angka[i - 2] == 0 && angka[i - 1] == 0)
+    }
+
+    switch (curAngka) {
+      case 0: {
+        if (modGroup === 0 && !has00InPrev) {
+          result += `${digitToUnit(digitCount)}`
+        }
+        break
+      }
+      default: {
+        if (modGroup === 0) {
+          if (curAngka != 1 || digitCount != 3 || !has00InPrev) {
+            const txt = numberToText(curAngka)
+            const num = txt ? `${txt}${(i !== length) ? ' ' : ''}` : ''
+            if (!skipNextNumber) {
+              result = `${num}`
+            }
+            if (!has00InPrev || curAngka !== 0) {
+              result += `${digitToUnit(digitCount)}`
+            }
+            skipNextNumber = false
+          } else {
+            result = 'seribu'
+          }
+        } else if (modGroup === 2) {
+          if (curAngka === 1) {
+            result = 'seratus'
+          } else {
+            result = `${numberToText(curAngka)} ratus`
+          }
+        } else {
+          if (curAngka === 1) {
+            const nextAngka = Number(angka[i + 1])
+            if (nextAngka === 0) {
+              result = 'sepuluh'
+            } else if (nextAngka === 1) {
+              result = 'sebelas'
+            } else {
+              result = `${numberToText(nextAngka)} belas`
+            }
+            skipNextNumber = true
+          } else {
+            result = `${numberToText(curAngka)} puluh`
+          }
+        }
+        break
+      }
+    }
+
+    i++
+  }
+
+  return result ? (finalResult + space + result) : finalResult
 }
 
 const terbilangSatuSatu = (angka) => {
@@ -59,10 +103,11 @@ const terbilangSatuSatu = (angka) => {
 }
 
 module.exports = function angkaTerbilang(target, settings={decimal: '.'}) {
-  if (typeof target !== "string") target = target.toString()
-  target = target.split(settings.decimal)
-
-  return target[1] 
-    ? `${terbilang(target[0])} koma ${terbilangSatuSatu(target[1])}` 
-    : terbilang(target[0])
+  if (typeof target !== "string") target = String(target)
+  if (target.indexOf(settings.decimal) > -1) {
+    target = target.split(settings.decimal)
+    return `${terbilang(target[0])} koma ${terbilangSatuSatu(target[1])}`
+  } else {
+    return terbilang(target)
+  }
 }

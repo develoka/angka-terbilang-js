@@ -1,5 +1,9 @@
 const angkaTerbilang = require("../");
 
+test('nol', () => {
+    expect(angkaTerbilang('0')).toBe("nol");
+});
+
 test('belasan', () => {
     expect(angkaTerbilang('11000')).toBe("sebelas ribu");
     expect(angkaTerbilang('10000')).toBe("sepuluh ribu");
@@ -10,6 +14,15 @@ test('belasan', () => {
     expect(angkaTerbilang('16915')).toBe("enam belas ribu sembilan ratus lima belas");
     expect(angkaTerbilang('1017911')).toBe("satu juta tujuh belas ribu sembilan ratus sebelas");
     expect(angkaTerbilang('110011')).toBe("seratus sepuluh ribu sebelas");
+});
+
+test('seribu-saturibu', () => {
+    expect(angkaTerbilang('1000')).toBe("seribu");
+    expect(angkaTerbilang('21000')).toBe("dua puluh satu ribu");
+    expect(angkaTerbilang('201000')).toBe("dua ratus satu ribu");
+    expect(angkaTerbilang('2001000')).toBe("dua juta seribu");
+    expect(angkaTerbilang('20001000')).toBe("dua puluh juta seribu");
+    expect(angkaTerbilang('200001000')).toBe("dua ratus juta seribu");
 });
 
 test('jutaan', () => {
