@@ -95,7 +95,7 @@ Benchmark dilakukan terhadap 2 package serupa lainnya. Dengan mengkonversi angka
 
 | Package                          | Angka Ratusan Ribu      | Angka Ratusan Juta      | Angka Ratusan Milyar    | Angka Ratusan Triliun   |
 |----------------------------------|-------------------|-------------------|-------------------|-------------------|
-| [@develoka/angka-terbilang-js](https://github.com/develoka/angka-terbilang-js)     | 473,566 ops/sec | 384,371 ops/sec | 289,601 ops/sec | 218,829 ops/sec |
+| [@develoka/angka-terbilang-js](https://github.com/develoka/angka-terbilang-js)     | 2,623,291 ops/sec | 2,054,952 ops/sec | 1,602,888 ops/sec | 1,250,390 ops/sec |
 | [dikyarga/angka-menjadi-terbilang](https://github.com/dikyarga/angka-menjadi-terbilang) | 113,633 ops/sec   | 104,313 ops/sec   | 86,764 ops/sec    | 75,704 ops/sec    |
 | [BosNaufal/terbilang-js](https://github.com/BosNaufal/terbilang-js)           | 190,818 ops/sec   | 123,329 ops/sec   | 76,851 ops/sec    | 52,241 ops/sec    |
 
