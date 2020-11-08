@@ -78,10 +78,6 @@ console.log(angkaTerbilang('123,23', {decimal: ','}));
 | 10<sup>60</sup> | novemdesiliun    |
 | 10<sup>63</sup> | vigintiliun      |
 
-### C. Performa Tinggi 
-
-Dirancang sedemikian rupa dengan performa sebagai patokan.
-
 ## Testing
 
 Testing menggunakan [jest](https://jestjs.io/). Lihat [file tests](https://github.com/develoka/angka-terbilang-js/blob/master/test/index.test.js).
