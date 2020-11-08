@@ -37,7 +37,18 @@ console.log(angkaTerbilang('3148112838011192391239213'));
 
 ## Fitur
 
-Mendukung bilangan hingga 10<sup>63</sup>
+A. Mendukung konversi angka di belakang koma. Default simbol koma adalah `"."`. Untuk mengubah gunakan parameter `{ decimal: ','}`.
+
+```js
+console.log(angkaTerbilang(123.23));
+// seratus dua puluh tiga koma dua tiga
+console.log(angkaTerbilang('123.23'));
+// seratus dua puluh tiga koma dua tiga
+console.log(angkaTerbilang('123,23', {decimal: ','}));
+// seratus dua puluh tiga koma dua tiga
+```
+
+B. Mendukung bilangan besar, hingga 10<sup>63</sup>.
 
 | Angka           | Satuan           |
 |:---------------:|:----------------:|
@@ -65,16 +76,7 @@ Mendukung bilangan hingga 10<sup>63</sup>
 | 10<sup>60</sup> | novemdesiliun    |
 | 10<sup>63</sup> | vigintiliun      |
 
-Mendukung konversi angka di belakang koma. Default simbol koma adalah `"."`. Untuk mengubah gunakan parameter tambahan.
-
-```js
-console.log(angkaTerbilang(123.23));
-// seratus dua puluh tiga koma dua tiga
-console.log(angkaTerbilang('123.23'));
-// seratus dua puluh tiga koma dua tiga
-console.log(angkaTerbilang('123,23', {decimal: ','}));
-// seratus dua puluh tiga koma dua tiga
-```
+C. Performa Tinggi. Dirancang sedemikian rupa dengan performa sebagai patokan.
 
 ## Testing
 
@@ -99,8 +101,11 @@ Benchmark dilakukan terhadap 2 package serupa lainnya. Dengan mengkonversi angka
 
 | Package                          | Angka Ratusan Ribu      | Angka Ratusan Juta      | Angka Ratusan Milyar    | Angka Ratusan Triliun   |
 |----------------------------------|-------------------|-------------------|-------------------|-------------------|
-| [@develoka/angka-terbilang-js](https://github.com/develoka/angka-terbilang-js)     | 2,623,291 ops/sec | 2,054,952 ops/sec | 1,602,888 ops/sec | 1,250,390 ops/sec |
-| [dikyarga/angka-menjadi-terbilang](https://github.com/dikyarga/angka-menjadi-terbilang) | 113,633 ops/sec   | 104,313 ops/sec   | 86,764 ops/sec    | 75,704 ops/sec    |
-| [BosNaufal/terbilang-js](https://github.com/BosNaufal/terbilang-js)           | 190,818 ops/sec   | 123,329 ops/sec   | 76,851 ops/sec    | 52,241 ops/sec    |
+| [@develoka/angka-terbilang-js](https://github.com/develoka/angka-terbilang-js)     | 3,033,891 ops/sec | 2,304,711 ops/sec | 1,748,600 ops/sec | 1,339,721 ops/sec |
+| [dikyarga/angka-menjadi-terbilang](https://github.com/dikyarga/angka-menjadi-terbilang) | 116,710 ops/sec   | 103,075 ops/sec   | 85,881 ops/sec    | 77,056 ops/sec    |
+| [BosNaufal/terbilang-js](https://github.com/BosNaufal/terbilang-js)           | 188,457 ops/sec   | 130,263 ops/sec   | 80,033 ops/sec    | 54,130 ops/sec    |
+| [DimasKiddo/angka-terbilang-nodejs](https://github.com/dimaskiddo/angka-terbilang-nodejs)           | 1,843,987 ops/sec   | 1,791,951 ops/sec   | 1,327,440 ops/sec    | 1,050,543 ops/sec    |
+| [rimara14/terbilang](https://github.com/rimara14/terbilang)           | 423,788 ops/sec   | 291,578 ops/sec   | 170,460 ops/sec    | 1,103,812 ops/sec    |
+
 
 Detail benchmark dapat dilihat pada halaman [repository benchmark](https://github.com/develoka/angka-terbilang-js-benchmark).
