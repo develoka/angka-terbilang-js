@@ -37,7 +37,9 @@ console.log(angkaTerbilang('3148112838011192391239213'));
 
 ## Fitur
 
-A. Mendukung konversi angka di belakang koma. Default simbol koma adalah `"."`. Untuk mengubah gunakan parameter `{ decimal: ','}`.
+### A. Mendukung konversi angka di belakang koma 
+
+Default simbol koma adalah `"."`. Untuk mengubah gunakan parameter `{ decimal: ','}`.
 
 ```js
 console.log(angkaTerbilang(123.23));
@@ -48,7 +50,7 @@ console.log(angkaTerbilang('123,23', {decimal: ','}));
 // seratus dua puluh tiga koma dua tiga
 ```
 
-B. Mendukung bilangan besar, hingga 10<sup>63</sup>.
+### B. Mendukung bilangan besar, hingga 10<sup>63</sup>.
 
 | Angka           | Satuan           |
 |:---------------:|:----------------:|
@@ -76,7 +78,9 @@ B. Mendukung bilangan besar, hingga 10<sup>63</sup>.
 | 10<sup>60</sup> | novemdesiliun    |
 | 10<sup>63</sup> | vigintiliun      |
 
-C. Performa Tinggi. Dirancang sedemikian rupa dengan performa sebagai patokan.
+### C. Performa Tinggi 
+
+Dirancang sedemikian rupa dengan performa sebagai patokan.
 
 ## Testing
 
