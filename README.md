@@ -3,7 +3,7 @@ Mengkonversi angka ke dalam bilangan bahasa Indonesia. Misalnya dari `123`, menj
 
 ## Demo
 
-[Link Demo](http://code.bakasyntax.com/gist/e41efb58b4b7fae2bfdfd0a1b0219ed7?default-pans=html,js,output)
+[Link Demo](http://labs.codesenpai.com/gist/e41efb58b4b7fae2bfdfd0a1b0219ed7?default-pans=html,js,output)
 
 ## Instalasi
 
